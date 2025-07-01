@@ -1,78 +1,165 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19877020&assignment_repo_type=AssignmentRepo)
-# Real-Time Chat Application with Socket.io
 
-This assignment focuses on building a real-time chat application using Socket.io, implementing bidirectional communication between clients and server.
+# LivePulseTalk 💬
 
-## Assignment Overview
+A modern, real-time chat application built with React, TypeScript, and Tailwind CSS. LivePulseTalk provides an intuitive and responsive chat experience with multiple rooms, user presence tracking, and message reactions.
 
-You will build a chat application with the following features:
-1. Real-time messaging using Socket.io
-2. User authentication and presence
-3. Multiple chat rooms or private messaging
-4. Real-time notifications
-5. Advanced features like typing indicators and read receipts
+![LivePulseTalk Screenshots:
+(https://drive.google.com/file/d/1RfGpYhq6sturKvmiUEawdzFFiUx8zC3H/view?usp=drivesdk)
+(https://drive.google.com/file/d/1RYzeygJQuwhtSOgzuz_2-QsEHYseSHo7/view?usp=drivesdk)
 
-## Project Structure
+## ✨ Features
+
+### 🚀 Core Functionality
+- **Real-time Messaging** - Instant message delivery and synchronization
+- **Multiple Chat Rooms** - Organize conversations by topics
+- **User Authentication** - Simple username-based login system
+- **Responsive Design** - Works seamlessly on desktop and mobile devices
+
+### 👥 User Experience
+- **Online Presence** - See who's currently online and when users were last active
+- **Message Reactions** - React to messages with emojis
+- **Typing Indicators** - See when other users are typing
+- **User Avatars** - Automatically generated unique avatars for each user
+- **Message Timestamps** - Track when messages were sent
+
+### 🎨 Modern UI/UX
+- **Glass-morphism Design** - Beautiful backdrop blur effects
+- **Smooth Animations** - Fluid transitions and micro-interactions
+- **Dark/Light Theme Ready** - Built with shadcn/ui components
+- **Mobile-First** - Optimized for all screen sizes
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Date Handling**: date-fns
+- **State Management**: React Hooks
+- **Responsive Design**: Custom hooks with mobile detection
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (version 16 or higher)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd livepulsetalk
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to `https://live-pulse-talk.lovable.app/` to see the application.
+
+## 📱 Usage
+
+### Getting Started
+1. **Enter Username**: Start by entering your desired username on the welcome screen
+2. **Join a Room**: Select from available chat rooms (General, Tech Talk, Random, Gaming)
+3. **Start Chatting**: Send messages, react to others' messages, and enjoy real-time communication
+
+### Features Guide
+- **Send Messages**: Type in the message input and press Enter or click the send button
+- **React to Messages**: Hover over messages to see reaction options
+- **Switch Rooms**: Use the sidebar to navigate between different chat rooms
+- **View Online Users**: Click the users icon to see who's currently online
+- **Toggle Sound**: Use the sound icon to enable/disable notification sounds
+
+## 🏗️ Project Structure
 
 ```
-socketio-chat/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # UI components
-│   │   ├── context/        # React context providers
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── pages/          # Page components
-│   │   ├── socket/         # Socket.io client setup
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Node.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Socket event handlers
-│   ├── models/             # Data models
-│   ├── socket/             # Socket.io server setup
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
+src/
+├── components/
+│   ├── auth/
+│   │   └── AuthScreen.tsx          # User authentication screen
+│   ├── chat/
+│   │   ├── ChatArea.tsx            # Main chat interface
+│   │   ├── ChatLayout.tsx          # Overall chat layout
+│   │   ├── MessageBubble.tsx       # Individual message component
+│   │   ├── Sidebar.tsx             # Room navigation sidebar
+│   │   ├── TypingIndicator.tsx     # Shows typing status
+│   │   └── UserList.tsx            # Online users display
+│   └── ui/                         # shadcn/ui components
+├── hooks/
+│   └── use-mobile.tsx              # Mobile detection hook
+├── lib/
+│   └── utils.ts                    # Utility functions
+└── pages/
+    └── Index.tsx                   # Main application entry point
 ```
 
-## Getting Started
+## 🔧 Customization
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week5-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+### Adding New Chat Rooms
+Edit the `chatRooms` array in `ChatLayout.tsx`:
 
-## Files Included
+```typescript
+const chatRooms: ChatRoom[] = [
+  { id: 'new-room', name: 'New Room', description: 'Description', memberCount: 0 },
+  // ... existing rooms
+];
+```
 
-- `Week5-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Socket.io configuration templates
-  - Sample components for the chat interface
+### Customizing Themes
+The application uses Tailwind CSS. Modify colors and styling in:
+- `tailwind.config.ts` for global theme configuration
+- Individual component files for specific styling
 
-## Requirements
+### Adding New Features
+- **Message Types**: Extend the `Message` interface in `ChatLayout.tsx`
+- **User Roles**: Add role properties to the `User` interface
+- **Custom Reactions**: Modify the reactions array in `MessageBubble.tsx`
 
-- Node.js (v18 or higher)
-- npm or yarn
-- Modern web browser
-- Basic understanding of React and Express
+## 🚀 Deployment
 
-## Submission
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+### Manual Deployment
+1. **Build the application**
+   ```bash
+   npm run build
+   ```
 
-1. Complete both the client and server portions of the application
-2. Implement the core chat functionality
-3. Add at least 3 advanced features
-4. Document your setup process and features in the README.md
-5. Include screenshots or GIFs of your working application
-6. Optional: Deploy your application and add the URLs to your README.md
+2. **Deploy the `dist` folder** to your preferred hosting service:
+   - Vercel
+   - Netlify
+   - GitHub Pages
+   - Any static hosting service
 
-## Resources
 
-- [Socket.io Documentation](https://socket.io/docs/v4/)
-- [React Documentation](https://react.dev/)
-- [Express.js Documentation](https://expressjs.com/)
-- [Building a Chat Application with Socket.io](https://socket.io/get-started/chat) 
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+
+
+
+
